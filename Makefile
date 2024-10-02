@@ -6,7 +6,7 @@ INC= -Iinclude/
 LD= -nostdlib -T stm32_ls.ld
 LDS= -T stm32_ls.ld
 
-all:startup.o main.o
+all:startup.o main.o schedular.o task.o
 	$(CC) $(LD) *.o -Wl,-Map=final.map -o final.elf
 	$(ELF) -all final.elf > elf_dump.elfd
 
@@ -14,6 +14,9 @@ startup.o: startup.c
 	$(CC) $(CFLAGS) $(INC) $@ $^
 
 main.o: main.c
+	$(CC) $(CFLAGS) $(INC) $@ $^
+
+schedular.o: schedular.c
 	$(CC) $(CFLAGS) $(INC) $@ $^
 
 task.o: task.c

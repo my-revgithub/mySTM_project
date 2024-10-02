@@ -3,6 +3,8 @@
 #include "register.h"
 
 void Reset_function(void);
+
+//Linker labels
 extern uint32 _str_sram;
 extern uint32 _end_sram;
 extern uint32 _str_bss;
